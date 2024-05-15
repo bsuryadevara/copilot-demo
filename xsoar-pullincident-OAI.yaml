@@ -1,0 +1,283 @@
+openapi: "3.0.0"
+info:
+  version: 1.0.0
+  title: Incident API
+servers:
+  - url: https://02019988349dev.crtx.us.paloaltonetworks.com
+paths:
+  /incident/load/{id}:
+    get:
+      summary: Load incident by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The ID of the incident to be loaded.
+      responses:
+        '200':
+          description: Incident data
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IncidentOutputData'
+components:
+  schemas:
+    IncidentOutputData:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The ID of the incident.
+        version:
+          type: integer
+          description: The version of the incident.
+        cacheVersn:
+          type: integer
+          description: The cache version of the incident.
+        modified:
+          type: string
+          description: The modification date of the incident.
+        sizeInBytes:
+          type: integer
+          description: The size of the incident in bytes.
+        CustomFields:
+          type: object
+          description: The custom fields of the incident.
+          properties:
+            bmcassignee:
+              type: array
+              items:
+                type: object
+            bmccustomer:
+              type: array
+              items:
+                type: object
+            bmcrequester:
+              type: array
+              items:
+                type: object
+            containmentsla:
+              type: object
+              properties:
+                accumulatedPause:
+                  type: integer
+                  description: The accumulated pause of the containment SLA.
+                breachTriggered:
+                  type: boolean
+                  description: Whether the breach was triggered in the containment SLA.
+                dueDate:
+                  type: string
+                  description: The due date of the containment SLA.
+                endDate:
+                  type: string
+                  description: The end date of the containment SLA.
+                lastPauseDate:
+                  type: string
+                  description: The last pause date of the containment SLA.
+                runStatus:
+                  type: string
+                  description: The run status of the containment SLA.
+                sla:
+                  type: integer
+                  description: The SLA of the containment.
+                slaStatus:
+                  type: integer
+                  description: The SLA status of the containment.
+                startDate:
+                  type: string
+                  description: The start date of the containment SLA.
+                totalDuration:
+                  type: integer
+                  description: The total duration of the containment SLA.
+            # ... continue with the rest of the properties in the same manner ...
+        account:
+          type: string
+          description: The account associated with the incident.
+        autime:
+          type: integer
+          description: The autime of the incident.
+        type:
+          type: string
+          description: The type of the incident.
+        rawType:
+          type: string
+          description: The raw type of the incident.
+        name:
+          type: string
+          description: The name of the incident.
+        rawName:
+          type: string
+          description: The raw name of the incident.
+        status:
+          type: integer
+          description: The status of the incident.
+        custom_status:
+          type: string
+          description: The custom status of the incident.
+        resolution_status:
+          type: string
+          description: The resolution status of the incident.
+        reason:
+          type: string
+          description: The reason for the incident.
+        created:
+          type: string
+          description: The creation date of the incident.
+        occurred:
+          type: string
+          description: The occurrence date of the incident.
+        closed:
+          type: string
+          description: The closure date of the incident.
+        sla:
+          type: integer
+          description: The SLA of the incident.
+        severity:
+          type: integer
+          description: The severity of the incident.
+        investigationId:
+          type: string
+          description: The ID of the investigation associated with the incident.
+        labels:
+          type: array
+          items:
+            type: object
+            properties:
+              value:
+                type: string
+                description: The value of the label.
+              type:
+                type: string
+                description: The type of the label.
+        attachment:
+          type: string
+          description: The attachment associated with the incident.
+        details:
+          type: string
+          description: The details of the incident.
+        openDuration:
+          type: integer
+          description: The open duration of the incident.
+        lastOpen:
+          type: string
+          description: The last open date of the incident.
+        closingUserId:
+          type: string
+          description: The ID of the user who closed the incident.
+        owner:
+          type: string
+          description: The owner of the incident.
+        activated:
+          type: string
+          description: The activation date of the incident.
+        closeReason:
+          type: string
+          description: The reason for closing the incident.
+        rawCloseReason:
+          type: string
+          description: The raw close reason of the incident.
+        closeNotes:
+          type: string
+          description: The closure notes of the incident.
+        playbookId:
+          type: string
+          description: The ID of the playbook associated with the incident.
+        dueDate:
+          type: string
+          description: The due date of the incident.
+        reminder:
+          type: string
+          description: The reminder for the incident.
+        runStatus:
+          type: string
+          description: The run status of the incident.
+        notifyTime:
+          type: string
+          description: The notification time for the incident.
+        phase:
+          type: string
+          description: The phase of the incident.
+        rawPhase:
+          type: string
+          description: The raw phase of the incident.
+        isPlayground:
+          type: boolean
+          description: Whether the incident is a playground.
+        rawJSON:
+          type: string
+          description: The raw JSON of the incident.
+        parent:
+          type: string
+          description: The parent of the incident.
+        parentXDRIncident:
+          type: string
+          description: The parent XDR incident of the incident.
+        retained:
+          type: boolean
+          description: Whether the incident is retained.
+        category:
+          type: string
+          description: The category of the incident.
+        rawCategory:
+          type: string
+          description: The raw category of the incident.
+        linkedIncidents:
+          type: array
+          items:
+            type: string
+          description: The incidents linked to the incident.
+        linkedCount:
+          type: integer
+          description: The count of linked incidents.
+        droppedCount:
+          type: integer
+          description: The count of dropped incidents.
+        sourceInstance:
+          type: string
+          description: The source instance of the incident.
+        sourceBrand:
+          type: string
+          description: The source brand of the incident.
+        canvases:
+          type: array
+          items:
+            type: string
+          description: The canvases associated with the incident.
+        lastJobRunTime:
+          type: string
+          description: The last job run time of the incident.
+        feedBased:
+          type: boolean
+          description: Whether the incident is feed based.
+        dbotMirrorId:
+          type: string
+          description: The DBot mirror ID of the incident.
+        dbotMirrorInstance:
+          type: string
+          description: The DBot mirror instance of the incident.
+        dbotMirrorDirection:
+          type: string
+          description: The DBot mirror direction of the incident.
+        dbotDirtyFields:
+          type: array
+          items:
+            type: string
+          description: The DBot dirty fields of the incident.
+        dbotCurrentDirtyFields:
+          type: array
+          items:
+            type: string
+          description: The current DBot dirty fields of the incident.
+        dbotMirrorTags:
+          type: array
+          items:
+            type: string
+          description: The DBot mirror tags of the incident.
+        dbotMirrorLastSync:
+          type: string
+          description: The last DBot mirror sync of the incident.
+        isDebug:
+          type: boolean
+          description: Whether the incident is in debug mode.
