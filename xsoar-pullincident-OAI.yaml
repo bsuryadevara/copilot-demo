@@ -3,7 +3,7 @@ info:
   version: 1.0.0
   title: Incident API
 servers:
-  - url: https://02019988349dev.crtx.us.paloaltonetworks.com
+  - url: https://api-02019988349dev.crtx.us.paloaltonetworks.com
 paths:
   /incident/load/{id}:
     get:
