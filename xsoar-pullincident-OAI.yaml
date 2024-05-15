@@ -18,7 +18,7 @@ paths:
         - in: header
           name: x-xdr-auth-id
           schema:
-           type: integer
+           type: string 
           required: true
           description: Value of auth ID,default is 17
       responses:
