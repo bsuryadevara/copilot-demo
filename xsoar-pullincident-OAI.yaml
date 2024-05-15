@@ -15,6 +15,12 @@ paths:
           schema:
             type: string
           description: The ID of the incident to be loaded.
+        - in: header
+          name: x-xdr-auth-id
+          schema:
+           type: integer
+          required: true
+          description: Value of auth ID,default is 17
       responses:
         '200':
           description: Incident data
